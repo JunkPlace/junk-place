@@ -1,6 +1,6 @@
 .container
 
-  acme-navbar(creation-date='main.creationDate')
+  acme-navbar(creation-date='vm.creationDate')
 
   .jumbotron.text-center
     h1 Junk Place!
@@ -10,14 +10,12 @@
       br
       span Always a pleasure scaffolding your apps.
 
-    p.animated.infinite(ng-class='main.classAnimation')
-      button.btn.btn-lg.btn-success(type='button', ng-click='main.showToastr()') Splendid Toastr
+    p.animated.infinite(ng-class='vm.classAnimation')
+      button.btn.btn-lg.btn-success(type='button', ng-click='vm.showToastr()') Splendid Toastr
 
-    p
-      span With &hearts; thanks to the contributions of
-      acme-malarkey(extra-values="['Yeoman', 'Gulp', 'Angular']")
+    p {{ vm.storedText }}
 
-  .row
+  //.row
     .col-sm-6.col-md-4(ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'")
       .thumbnail
         img.pull-right(ng-src='assets/images/{{ awesomeThing.logo }}', alt='{{ awesomeThing.title }}')

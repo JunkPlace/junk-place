@@ -1,5 +1,6 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+
+  constructor (webDevTec, toastr, $window) {
     'ngInject';
 
     this.awesomeThings = [];
@@ -7,14 +8,14 @@ export class MainController {
     this.creationDate = 1492174405906;
     this.toastr = toastr;
 
-    this.activate($timeout, webDevTec);
+    this.activate(webDevTec);
+
+    this.storedText = $window.localStorage.getItem('text') || 'Empty localStorage';
+
   }
 
-  activate($timeout, webDevTec) {
+  activate(webDevTec) {
     this.getWebDevTec(webDevTec);
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
   }
 
   getWebDevTec(webDevTec) {
@@ -29,4 +30,5 @@ export class MainController {
     this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
     this.classAnimation = '';
   }
+
 }
