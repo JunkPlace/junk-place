@@ -1,0 +1,30 @@
+.main {
+
+  .jumbotron {
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  form {
+
+    display: flex;
+
+    input {
+      flex: 1;
+      display: block;
+      margin-right: 10px;
+    }
+
+  }
+
+  .from {
+    font-size: 80%;
+    color: gray;
+  }
+
+  .own {
+    text-align: right;
+  }
+
+}

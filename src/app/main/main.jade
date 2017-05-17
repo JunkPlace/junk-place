@@ -1,4 +1,4 @@
-.container
+.container.main
 
   acme-navbar(creation-date='vm.creationDate')
 
@@ -6,21 +6,26 @@
     h1 Junk Place!
 
     p.lead
-      img(src='assets/images/yeoman.png', alt="I'm Yeoman")
-      br
-      span Always a pleasure scaffolding your apps.
+      //img(src='assets/images/yeoman.png', alt="I'm Yeoman")
+      //br
+      span A place for inmemorable talks
 
-    p.animated.infinite(ng-class='vm.classAnimation')
-      button.btn.btn-lg.btn-success(type='button', ng-click='vm.showToastr()') Splendid Toastr
 
-    p {{ vm.storedText }}
+  form(ng-submit='vm.onSubmit()')
 
-  //.row
-    .col-sm-6.col-md-4(ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'")
-      .thumbnail
-        img.pull-right(ng-src='assets/images/{{ awesomeThing.logo }}', alt='{{ awesomeThing.title }}')
-        .caption
-          h3 {{ awesomeThing.title }}
-          p {{ awesomeThing.description }}
-          p
-            a(ng-href='{{awesomeThing.url}}') {{ awesomeThing.url }}
+    input#message.form-control(
+    autocomplete="off"
+    type="text"
+    placeholder="Message text"
+    ng-model='vm.messageText'
+    )
+
+    button.btn.btn-primary(type="submit") Send
+
+  .messages
+    .message(
+    ng-repeat='message in vm.messages | limitTo:-10'
+    ng-class='{own: message.from === "me" }'
+    )
+      .from \#{{ message.from }} ({{ message.date | amDateFormat:'HH:mm:ss' }})
+      .text {{ message.text }}

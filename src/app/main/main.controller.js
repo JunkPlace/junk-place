@@ -1,34 +1,39 @@
 export class MainController {
 
-  constructor (webDevTec, toastr, $window) {
+  constructor(toastr, socket) {
     'ngInject';
 
-    this.awesomeThings = [];
-    this.classAnimation = '';
-    this.creationDate = 1492174405906;
     this.toastr = toastr;
+    this.messageText = null;
+    this.socket = socket;
+    this.messages = [];
 
-    this.activate(webDevTec);
+    socket.on('message', message => {
 
-    this.storedText = $window.localStorage.getItem('text') || 'Empty localStorage';
+      message.date = new Date();
 
-  }
+      this.messages.push(message);
 
-  activate(webDevTec) {
-    this.getWebDevTec(webDevTec);
-  }
+      toastr.info(message.text, `From: #${message.from}`);
 
-  getWebDevTec(webDevTec) {
-    this.awesomeThings = webDevTec.getTec();
-
-    angular.forEach(this.awesomeThings, (awesomeThing) => {
-      awesomeThing.rank = Math.random();
     });
+
   }
 
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
+  onSubmit() {
+
+    let text = this.messageText;
+
+    this.socket.emit('info', text, () => {
+      this.messages.push({
+        from: 'me',
+        text: text,
+        date: new Date()
+      });
+    });
+
+    this.messageText = '';
+
   }
 
 }
