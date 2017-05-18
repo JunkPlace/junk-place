@@ -27,4 +27,6 @@ angular.module('junkPlace', [
   .controller('MainController', MainController)
   .directive('acmeNavbar', NavbarDirective)
 
+  .factory('socket', socketFactory => socketFactory({ioSocket: io.connect()}))
+
 ;
