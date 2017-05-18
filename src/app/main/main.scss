@@ -38,6 +38,7 @@ $black: #333333;
   .messages {
     padding-top: 15px;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   }
 
   .message {
