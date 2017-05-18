@@ -12,7 +12,7 @@ export class MainController {
 
       message.date = new Date();
 
-      this.messages.splice(0, 0, message);
+      this.addMessage(message);
 
       toastr.info(message.text, `From: ${message.from}`);
 
@@ -34,9 +34,16 @@ export class MainController {
 
     this.socket.emit('post', text, message => {
       message.from = 'me';
-      this.messages.splice(0, 0, message);
+      this.addMessage(message);
     });
 
+  }
+
+  addMessage(message) {
+    this.messages.splice(0, 0, message);
+    while (this.messages.length > 50) {
+      this.messages.pop()
+    }
   }
 
 }
