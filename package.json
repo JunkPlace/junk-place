@@ -1,7 +1,9 @@
 {
   "name": "junkPlace",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "socket.io-client": "^2.0.1"
+  },
   "scripts": {
     "test": "gulp test"
   },
