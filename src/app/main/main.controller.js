@@ -18,6 +18,10 @@ export class MainController {
 
     });
 
+    socket.on('welcome', messages => {
+      this.messages = messages;
+    })
+
   }
 
   onSubmit() {
