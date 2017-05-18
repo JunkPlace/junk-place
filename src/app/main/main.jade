@@ -11,16 +11,19 @@
       span A tool for unworthy talks
 
 
-  form(ng-submit='vm.onSubmit()')
+  form(ng-submit='vm.onSubmit()' name='messageForm')
 
     input#message.form-control(
     autocomplete="off"
     type="text"
     placeholder="Message text"
     ng-model='vm.messageText'
+    required
+    autofocus
+    min-length='1'
     )
 
-    button.btn.btn-primary(type="submit") Send
+    button.btn.btn-primary(type="submit" ng-disabled='messageForm.$invalid') Send
 
   .messages
     .message(
