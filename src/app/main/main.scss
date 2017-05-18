@@ -28,7 +28,7 @@ $black: #333333;
   form {
 
     display: flex;
-    margin-top: 20px;
+    margin-top: $padding;
 
     input {
       flex: 1;

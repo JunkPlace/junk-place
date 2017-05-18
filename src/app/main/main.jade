@@ -10,7 +10,7 @@
       //br
       span A decent spot for worthless talks
 
-  .messages#messages(resize resize-offset-top='70')
+  .messages#messages(resize resize-offset-top='65')
     .message(
     ng-attr-id='{{ message.id }}'
     ng-repeat='message in vm.messages | orderBy:"date" track by message.id'
