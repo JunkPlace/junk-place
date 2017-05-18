@@ -1,6 +1,9 @@
 {
   "name": "junkPlace",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A spot for worthless talks",
+  "repository": "https://github.com/JunkPlace/junk-place",
+  "license": "MIT",
   "dependencies": {
     "socket.io-client": "^2.0.1"
   },
