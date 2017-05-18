@@ -10,6 +10,14 @@
       //br
       span A spot for worthless talks
 
+  .messages#messages(resize resize-offset-top='70')
+    .message(
+    ng-attr-id='{{ message.id }}'
+    ng-repeat='message in vm.messages | orderBy:"date" track by message.id'
+    ng-class='{own: message.from === "me" }'
+    )
+      .from from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
+      .text {{ message.text }}
 
   form(ng-submit='vm.onSubmit()' name='messageForm')
 
@@ -24,11 +32,3 @@
     )
 
     button.btn.btn-primary(type="submit" ng-disabled='messageForm.$invalid') Send
-
-  .messages(resize resize-offset-top='10')
-    .message(
-    ng-repeat='message in vm.messages track by message.id'
-    ng-class='{own: message.from === "me" }'
-    )
-      .from from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
-      .text {{ message.text }}
