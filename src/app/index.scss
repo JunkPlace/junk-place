@@ -19,6 +19,10 @@ $icon-font-path: "../../../bower_components/bootstrap-sass/assets/fonts/bootstra
   padding: 0.2em 0;
 }
 
+::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none;
+}
+
 .thumbnail {
   height: 200px;
 
