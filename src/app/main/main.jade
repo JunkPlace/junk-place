@@ -25,10 +25,10 @@
 
     button.btn.btn-primary(type="submit" ng-disabled='messageForm.$invalid') Send
 
-  .messages
+  .messages(resize resize-offset-top='10')
     .message(
-    ng-repeat='message in vm.messages | limitTo:10 track by message.id'
+    ng-repeat='message in vm.messages track by message.id'
     ng-class='{own: message.from === "me" }'
     )
-      .from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
+      .from from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
       .text {{ message.text }}
