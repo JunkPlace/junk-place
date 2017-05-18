@@ -1,9 +1,26 @@
+$black: #333333;
+
 .main {
 
   .jumbotron {
+
     margin-bottom: 20px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    color: $black;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    @media screen and (min-width: 768px) {
+
+      padding-top: 30px;
+      padding-bottom: 30px;
+
+      h1 {
+        font-size: 50px;
+      }
+
+    }
+
   }
 
   form {

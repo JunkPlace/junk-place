@@ -3,12 +3,12 @@
   acme-navbar(creation-date='vm.creationDate')
 
   .jumbotron.text-center
-    h1 Junk Place!
+    h1 Welcome to the Junk&nbsp;Place!
 
     p.lead
       //img(src='assets/images/yeoman.png', alt="I'm Yeoman")
       //br
-      span A place for inmemorable talks
+      span A tool for unworthy talks
 
 
   form(ng-submit='vm.onSubmit()')
@@ -27,5 +27,5 @@
     ng-repeat='message in vm.messages | limitTo:10 track by message.id'
     ng-class='{own: message.from === "me" }'
     )
-      .from \#{{ message.from }} ({{ message.date | amDateFormat:'HH:mm:ss' }})
+      .from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
       .text {{ message.text }}
