@@ -24,7 +24,7 @@
 
   .messages
     .message(
-    ng-repeat='message in vm.messages | limitTo:-10'
+    ng-repeat='message in vm.messages | limitTo:10 track by message.id'
     ng-class='{own: message.from === "me" }'
     )
       .from \#{{ message.from }} ({{ message.date | amDateFormat:'HH:mm:ss' }})
