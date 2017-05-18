@@ -2,18 +2,20 @@ $black: #333333;
 
 .main {
 
+  $padding: 15px;
+
   .jumbotron {
 
     margin-bottom: 20px;
     color: $black;
 
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: $padding;
+    padding-bottom: $padding;
 
     @media screen and (min-width: 768px) {
 
-      padding-top: 30px;
-      padding-bottom: 30px;
+      padding-top: $padding * 2;
+      padding-bottom: $padding * 2;
 
       h1 {
         font-size: 50px;
@@ -37,13 +39,12 @@ $black: #333333;
   }
 
   .messages {
-    padding-top: 15px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
   }
 
-  .message {
-    padding: 3px 0;
+  .message + .message {
+    margin-top: 6px;
   }
 
   .from {
