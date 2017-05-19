@@ -19,14 +19,13 @@ export class MainController {
       localStorageService.set('userId', this.userId);
     }
 
-    socket.emit('setUser', this.userId);
-
     socket.on('message', message => {
       this.addMessage(message);
       toastr.info(message.text, `From: ${message.from}`);
     });
 
     socket.on('welcome', messages => {
+      socket.emit('setUser', this.userId);
       this.messages = messages;
       this.scrollMessages();
     })
