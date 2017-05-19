@@ -1,6 +1,8 @@
+import {v4} from 'uuid';
+
 export class MainController {
 
-  constructor(toastr, socket, $window, $timeout) {
+  constructor(toastr, socket, $window, $timeout, localStorageService) {
     'ngInject';
 
     this.toastr = toastr;
@@ -9,6 +11,13 @@ export class MainController {
     this.messages = [];
     this.$timeout = $timeout;
     this.scroller = $window.document.getElementById('messages');
+
+    this.userId = localStorageService.get('userId');
+
+    if (!this.userId) {
+      this.userId =  v4();
+      localStorageService.set('userId', this.userId);
+    }
 
     socket.on('message', message => {
       this.addMessage(message);

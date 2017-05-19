@@ -5,7 +5,8 @@
   "repository": "https://github.com/JunkPlace/junk-place",
   "license": "MIT",
   "dependencies": {
-    "socket.io-client": "^2.0.1"
+    "socket.io-client": "^2.0.1",
+    "uuid": "^3.0.1"
   },
   "scripts": {
     "test": "gulp test"
