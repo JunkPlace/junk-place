@@ -1,6 +1,6 @@
 /* global moment:false */
 
-import {config} from './index.config';
+import {config, localStorageConfig} from './index.config';
 import {routerConfig} from './index.route';
 import {runBlock} from './index.run';
 import {MainController} from './main/main.controller';
@@ -19,10 +19,12 @@ angular.module('junkPlace', [
   'ui.bootstrap',
   'toastr',
   'btford.socket-io',
-  'angularMoment'
+  'angularMoment',
+  'LocalStorageModule'
 ])
   .constant('moment', moment)
   .config(config)
+  .config(localStorageConfig)
   .config(routerConfig)
   .run(runBlock)
   .controller('MainController', MainController)
@@ -30,5 +32,4 @@ angular.module('junkPlace', [
   .directive('resize', ResizeDirective)
 
   .factory('socket', socketFactory => socketFactory({ioSocket: io.connect()}))
-
 ;

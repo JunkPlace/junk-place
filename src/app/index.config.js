@@ -10,3 +10,8 @@ export function config ($logProvider, toastrConfig) {
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
 }
+
+export function localStorageConfig(localStorageServiceProvider) {
+  'ngInject';
+   localStorageServiceProvider.setPrefix('junk');
+}
