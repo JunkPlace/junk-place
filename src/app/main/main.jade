@@ -14,9 +14,9 @@
     .message(
     ng-attr-id='{{ message.id }}'
     ng-repeat='message in vm.messages | orderBy:"date" track by message.id'
-    ng-class='{own: message.from === "me" }'
+    ng-class='{own: message.authorId === vm.userId }'
     )
-      .from from {{ message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
+      .from from {{ message.authorId === vm.userId ? 'me' : message.from }} at {{ message.date | amDateFormat:'HH:mm:ss' }}
       .text {{ message.text }}
 
   form(ng-submit='vm.onSubmit()' name='messageForm')
