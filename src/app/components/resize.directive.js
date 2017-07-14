@@ -1,8 +1,8 @@
+const SCREEN_XS_MAX = 768;
+const SCREEN_SM_MIN = 480;
+
 export function ResizeDirective($window, $uibPosition, $timeout) {
   'ngInject';
-
-  const SCREEN_XS_MAX = 768;
-  const SCREEN_SM_MIN = 480;
 
   return (scope, element, attrs) => {
 
