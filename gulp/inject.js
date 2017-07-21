@@ -1,31 +1,32 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require('path');
+const gulp = require('gulp');
+const conf = require('./conf');
 
-var $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
-var wiredep = require('wiredep').stream;
-var _ = require('lodash');
+const wiredep = require('wiredep').stream;
+const _ = require('lodash');
 
-var browserSync = require('browser-sync');
+const browserSync = require('browser-sync');
 
 gulp.task('inject-reload', ['inject'], function() {
   browserSync.reload();
 });
 
 gulp.task('inject', ['scripts', 'styles'], function () {
-  var injectStyles = gulp.src([
+
+  const injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
     path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')
   ], { read: false });
 
-  var injectScripts = gulp.src([
+  const injectScripts = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.module.js')
   ], { read: false });
 
-  var injectOptions = {
+  const injectOptions = {
     ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
     addRootSlash: false
   };
@@ -35,4 +36,5 @@ gulp.task('inject', ['scripts', 'styles'], function () {
     .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(_.extend({}, conf.wiredep)))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+
 });
